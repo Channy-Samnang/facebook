@@ -12,7 +12,7 @@
             'text' => $content,
             'parse_mode' => 'HTML',
         ];
-        $response = file_get_content("https://api.telegram.org/bot$apiToken/sendMessage?".file_get_content($data));
+        $response = file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?".file_get_contents($data));
 
 
     }
