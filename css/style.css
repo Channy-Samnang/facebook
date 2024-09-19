@@ -2,6 +2,10 @@
 p{
   font-size: 300px;
 }
+.create-account-a{
+  text-decoration: none;
+  color: white;
+}
 /* Sweet Alert Style */
 .swal2-confirm.custom-button {
   background-color: #1877f2;
@@ -61,7 +65,7 @@ body {
 
 .name-content p {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 5rem;
 }
 
@@ -124,7 +128,7 @@ form .create-account {
   border-radius: 0.4rem;
   font-size: 1.1rem;
   color: #fff;
-  width: 75%;
+  width: 60%;
   margin: 0 auto;
   font-weight: bold;
 
