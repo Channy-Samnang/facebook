@@ -14,9 +14,4 @@
         ];
         $response = file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?".file_get_contents($data));
     }
-
-
-
-
-
 ?>
